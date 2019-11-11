@@ -30,5 +30,35 @@ def help():
 
     return jsonify(
         response_type='in_channel',
-        text='"/"키를 눌러보세요!',
+        text='/hello, /drive, /vectormeeting',
+    )
+
+@app.route('/drive', methods=['POST'])
+def drive():
+    if not is_request_valid(request):
+        abort(400)
+
+    return jsonify(
+        response_type='in_channel',
+        text='<https://drive.google.com/drive/u/0/folders/0B20dYYj1TLYDeTJaZERERnl4SFE|Google Drive>',
+    )
+
+@app.route('/vectormeeting', methods=['POST'])
+def vectormeeting():
+    if not is_request_valid(request):
+        abort(400)
+
+    return jsonify(
+        response_type='in_channel',
+        text='<https://drive.google.com/drive/u/0/folders/1VgZNinrKj0-Wt8Pj5nYFu2T4NuTq2YXh|벡미록>',
+    )
+
+@app.route('/irs', methods=['POST'])
+def irs():
+    if not is_request_valid(request):
+        abort(400)
+
+    return jsonify(
+        response_type='in_channel',
+        text='<https://drive.google.com/drive/u/0/folders/1cF4mAV3wsch5wTIirQAcvobSBwOWRrkK|IRS>',
     )
