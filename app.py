@@ -30,7 +30,13 @@ def help():
 
     return jsonify(
         response_type='in_channel',
-        text='/hello, /drive, /vectormeeting',
+        text='\
+        /hello : ICISTS 공식 홈페이지 링크를 출력합니다.\n\
+        /drive : ICISTS Github 링크를 출력합니다.\n\
+        /vectormeeting : 벡미록 링크를 출력합니다.\n\
+        /irs : IRS 링크를 출력합니다.\n\
+        /github : ICISTS Github 링크를 출력합니다.\n\
+        ',
     )
 
 @app.route('/drive', methods=['POST'])
@@ -61,4 +67,14 @@ def irs():
     return jsonify(
         response_type='in_channel',
         text='<https://drive.google.com/drive/u/0/folders/1cF4mAV3wsch5wTIirQAcvobSBwOWRrkK|IRS>',
+    )
+
+@app.route('/github', methods=['POST'])
+def github():
+    if not is_request_valid(request):
+        abort(400)
+
+    return jsonify(
+        response_type='in_channel',
+        text='<https://github.com/icists|Github>',
     )
